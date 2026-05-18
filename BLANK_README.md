@@ -3,20 +3,24 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<div align="center">
-  <a href="https://github.com/PEDSnet/repo_name">
-    <img src="images/logo.png" alt="Logo" height="80px" width="80px">
-  </a>
-
-<h3 align="center">project_title</h3>
-
-  <p align="center">
-    project_description
+<div>
+<h3 align="center">Data Quality Results Descriptive Profile (DQRDP)</h3>
+  <p align="left">
+    A metadata application profile (MAP) developed by the PEDSnet Learning Health System to describe the results of study-specific data quality assessment checks, specifically those which examine real-world pediatric data. This MAP is optimized to describe the results of data quality modules in the <a href="https://github.com/ssdqa">SQUBA package</a>, but is generally extensible to other data quality results types as well.
     <br />
-    <!-- Uncomment and edit below for a documentation hyperlink. -->
-    <!-- <a href="https://github.com/PEDSnet/repo_name"><strong>Explore the docs »</strong></a> -->
+    </p>
+
+<!-- Uncomment and edit below for a documentation hyperlink. -->
+
+<a href="https://github.com/PEDSnet/DQResults_MAP"><strong>Explore the docs »</strong></a>
+- <a href="">DQRDP Guidelines & Data Dictionary</a><br>
+- <a href="">DQRDP Schemas and Changes</a><br>
+- DQRDP Conversions (Mappings and XSLTs) - Coming soon!<br> 
+- DQRDP Design Principles - Coming soon!<br>
+- DQRDP Archived Resources - Coming soon!<br>
+- DQRDP Related Formats - Coming soon!
     <!-- <br /> -->
-  </p>
+
 </div>
 
 <!-- ABOUT THE PROJECT -->
@@ -24,21 +28,22 @@
 
 <!-- Edit and uncomment the line below for a product screenshot that links to your site. -->
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
+### Current Version: 1.0
+Last Updated: Spring 2026
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!--
 ### Built With
 
-<!-- DEPENDENCIES_START -->
-*DO NOT ALTER (unless manually pasting session info)! Dependencies will be automatically updated here from renv.lock*
+<!-- DEPENDENCIES_START 
+*DO NOT ALTER (unless manually pasting session info)! Dependencies will be automatically updated here from renv.lock* -->
 <!-- DEPENDENCIES_END -->
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<!-- GETTING STARTED 
+## Getting Started -->
 
-<!-- GETTING STARTED -->
-## Getting Started
-
-
+<!--
 ### Installation
 
 > **Note:** The installation section below is an example. Please edit it to reflect the specific installation steps for your project.
@@ -46,7 +51,7 @@
 1. Create a new repo using "Use this template."
 2. Clone the repo:
 ```sh
-git clone https://github.com/PEDSnet/repo_name.git
+git clone https://github.com/PEDSnet/DQResults_MAP.git
 ```
 3. Migrate codebase (including `renv.lock`) into project repository base directory:
 ```sh
@@ -54,29 +59,39 @@ git clone https://github.com/PEDSnet/repo_name.git
 cd /path/to/project/directory
 Rscript -e "renv::snapshot()"
 
-# Copy into cloned repo_name repo:
-cd /path/to/repo_name
+# Copy into cloned DQResults_MAP repo:
+cd /path/to/DQResults_MAP
 cp -R /path/to/project/directory/* .
 ```
 4. Setup R environment:
 ```bash
 Rscript -e "renv::restore()"
-```
+``` 
+-->
 
-### Developers (Optional)
+### Developers & Affiliations
+- **PI, Informatics Lead**: Charles Bailey, MD, PhD<sup>1</sup> <a href="https://orcid.org/0000-0002-8967-0662" aria-label="View ORCID record - 0000-0002-8967-0662"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
+- **Data Analytics Technical Director**: Hanieh Razzaghi, PhD, MPH<sup>1,2</sup> <a href="https://orcid.org/0000-0001-5001-1590" aria-label="View ORCID record - 0000-0001-5001-1590"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
+- **Metadata Librarian**: Annabel Pinkney, MSLIS<sup>1</sup> <a href="https://orcid.org/0009-0007-5255-0871" aria-label="View ORCID record - 0009-0007-5255-0871"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
+- **Data Integration Analyst**: Kaleigh Wieand, MS<sup>1</sup> <a href="https://orcid.org/0009-0003-7477-2601" aria-label="View ORCID record - 0009-0003-7477-2601"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
+- **Data Integration Analyst**: Kimberley Dickinson, MS <sup>1</sup><a href="https://orcid.org/0000-0001-9523-056X" aria-label="View ORCID record - 0000-0001-9523-056X"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
+- **Clinical Research Program Manager**: Miranda Higganbotham, MPH<sup>1</sup>
 
-You can include a list of contributors or developers here to credit those involved in the project. For example:
-- **Name**: Role (e.g., Lead Developer)
-- **Name**: Role (e.g., Contributor)
+<sup>1</sup> PEDSnet Learing Health System, Applied Clinical Research Center, Children's Hospital of Philadelphia, Philadelphia, PA <br>
+<sup>2</sup> Perelman School of Medicine, University of Pennsylvania, Philadelphia, PA
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+### Publications
+⚠️ This section is in progress - Come back soon!
+
+<br>
 
 
 <!-- USAGE EXAMPLES -->
-## Usage
+## Uses and Features
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+⚠️ This section is in progress - Come back soon!
 
 <!-- _For more examples, please refer to the [Documentation](https://example.com)_ -->
 
@@ -85,26 +100,29 @@ Use this space to show useful examples of how a project can be used. Additional 
 <!-- LICENSE -->
 ## License
 
-Distributed under the project_license. See `LICENSE.txt` for more information.
+Distributed under a Mozilla Public License Version 2.0. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTACT -->
 ## Contact
 
-pedsnetdcc@chop.edu
+For inquiries about PEDSnet and the PEDSnet Data Quality Program: pedsnetdcc@chop.edu <br>
+For inquiries about the metadata schema and reuse: pinkneya1@chop.edu
 
-Project Link: [https://github.com/PEDSnet/repo_name](https://github.com/PEDSnet/repo_name)
+### Project Links: 
+- [GitHub](https://github.com/PEDSnet/DQResults_MAP) 
+- [PEDSpace Repository Collection (Private)](https://hdl.handle.net/20.500.14642/976)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[issues-shield]: https://img.shields.io/github/issues/PEDSnet/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/PEDSnet/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/PEDSnet/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/PEDSnet/repo_name/blob/master/LICENSE.txt
+[issues-shield]: https://img.shields.io/github/issues/PEDSnet/DQResults_MAP.svg?style=for-the-badge
+[issues-url]: https://github.com/PEDSnet/DQResults_MAP/issues
+[license-shield]: https://img.shields.io/github/license/PEDSnet/DQResults_MAP.svg?style=for-the-badge
+[license-url]: https://github.com/PEDSnet/DQResults_MAP/blob/master/LICENSE.txt
 [product-screenshot]: images/screenshot.png
