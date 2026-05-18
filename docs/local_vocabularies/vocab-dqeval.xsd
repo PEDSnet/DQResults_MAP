@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://github.com/PEDSnet/DQResults_MAP"
+           xmlns:vocab="https://github.com/PEDSnet/DQResults_MAP/tree/main/schema/local_vocabularies">
+
+  <xs:simpleType name="DQEvalVocabulary">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Person-Level Analysis"/>
+      <xs:enumeration value="Visit-Level Analysis"/>
+      <xs:enumeration value="Event-Level Analysis"/>
+      <xs:enumeration value="Longitudinal Analysis"/>
+      <xs:enumeration value="Cross-Sectional Analysis"/>
+      <xs:enumeration value="Multi-Site Analysis"/>
+      <xs:enumeration value="Single-Site Analysis"/>
+      <xs:enumeration value="Data Anomaly Method"/>
+      <xs:enumeration value="Exploratory Analysis"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

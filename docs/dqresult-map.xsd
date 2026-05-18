@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:dcterms="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
+           xmlns:dc="http://purl.org/dc/elements/1.1/"
+           xmlns:dspace="https://pedsnet.org/metadata/admin/registries/metadata/dspace"
+           xmlns:local="https://pedsnet.org/metadata/admin/registries/metadata/local"
+           targetNamespace="https://github.com/PEDSnet/DQResults_MAP/"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.0">
+
+  <!-- ============================================================
+       Data Quality Results Descriptive Profile
+       Organization:  PEDSnet Learning Health System
+       Description:   Describes a data quality result record in the
+                      DSpace repository. Combines DC Elements 1.1,
+                      DCMI Terms, DSpace administrative elements, and
+                      local elements.
+       Namespaces:
+         DC Elements 1.1  – http://purl.org/dc/elements/1.1/
+         DCMI Terms       – http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/
+         DSpace           – https://pedsnet.org/metadata/admin/registries/metadata/dspace
+         Local            – (unqualified)
+  ============================================================ -->
+
+
+  <!-- ============================================================
+   External namespace imports 
+   ============================================================ -->
+  <xs:import namespace="http://purl.org/dc/elements/1.1/"
+             schemaLocation="https://www.dublincore.org/schemas/xmls/qdc/dc.xsd"/>
+  <xs:import namespace="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
+             schemaLocation="https://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd"/>
+  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+           schemaLocation="vocabularies/vocab-dqeval.xsd"/>
+  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+           schemaLocation="vocabularies/vocab-dataprov.xsd"/>
+  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+           schemaLocation="vocabularies/vocab-outcomes.xsd"/>
+  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+           schemaLocation="vocabularies/vocab-results.xsd"/>
+
+ 
+  <!-- ============================================================
+   Simple type definitions 
+   ============================================================ -->
+
+  <!-- ISO 8601 date: YYYY-MM-DD -->
+  <xs:simpleType name="ISO8601Date">
+    <xs:annotation>
+      <xs:documentation>Calendar date in ISO 8601 YYYY-MM-DD format.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:date"/>
+  </xs:simpleType>
+
+  <!-- ISO 8601 date or dateTime (union) -->
+  <xs:simpleType name="ISO8601DateOrDateTime">
+    <xs:annotation>
+      <xs:documentation>Date or datetime in ISO 8601 format (YYYY-MM-DD or full dateTime).</xs:documentation>
+    </xs:annotation>
+    <xs:union memberTypes="xs:date xs:dateTime"/>
+  </xs:simpleType>
+
+  <!-- ISO 639 language code (2- or 3-letter) -->
+  <xs:simpleType name="ISO639LanguageCode">
+    <xs:annotation>
+      <xs:documentation>Language tag per ISO 639 (e.g. "en", "eng").</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-zA-Z]{2,3}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Checksum / system ID (opaque string, non-empty) -->
+  <xs:simpleType name="ChecksumType">
+    <xs:annotation>
+      <xs:documentation>System-generated opaque identifier or checksum string.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- DSpace handle ID -->
+  <xs:simpleType name="HandleIDType">
+    <xs:annotation>
+      <xs:documentation>DSpace handle identifier, e.g. "123456789/42".</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- Person name: "Family Name, Given Name" -->
+  <xs:simpleType name="PersonNameType">
+    <xs:annotation>
+      <xs:documentation>Contributor name in "Family Name, Given Name" format.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value=".+,.+"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- DSpace relationship reference (opaque item/entity UUID or handle) -->
+  <xs:simpleType name="DSpaceRelationshipType">
+    <xs:annotation>
+      <xs:documentation>Reference to a related DSpace entity (UUID or handle string).</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:minLength value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <!-- ============================================================
+       Controlled-vocabulary string types
+       Each carries an optional @authority and @authorityURI attribute
+       (pattern borrowed from MODS) to record the source vocabulary.
+  ============================================================ -->
+
+<xs:complexType name="ControlledTermType">
+    <xs:annotation>
+      <xs:documentation>A term drawn from a named controlled vocabulary.</xs:documentation>
+    </xs:annotation>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute name="authority"    type="xs:string" use="optional"/>
+        <xs:attribute name="authorityURI" type="xs:anyURI" use="optional"/>
+        <xs:attribute name="valueURI"     type="xs:anyURI" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="DataProvTermType">
+  <xs:simpleContent>
+    <xs:restriction base="local:ControlledTermType">
+      <xs:enumeration value="PEDSnet Data Source"/>
+      <xs:enumeration value="PCORnet Data Source"/>
+      <xs:enumeration value="Non-Network Data Source"/>
+      <xs:enumeration value="Anonymized Data Source"/>
+      <xs:attribute name="authority"    type="xs:string" fixed="DataProv"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+    </xs:restriction>
+  </xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="DQEvalTermType">
+  <xs:simpleContent>
+    <xs:restriction base="local:ControlledTermType">
+      <xs:enumeration value="Person-Level Analysis"/>
+      <xs:enumeration value="Visit-Level Analysis"/>
+      <xs:enumeration value="Event-Level Analysis"/>
+      <xs:enumeration value="Longitudinal Analysis"/>
+      <xs:enumeration value="Cross-Sectional Analysis"/>
+      <xs:enumeration value="Multi-Site Analysis"/>
+      <xs:enumeration value="Single-Site Analysis"/>
+      <xs:enumeration value="Data Anomaly Method"/>
+      <xs:enumeration value="Exploratory Analysis"/>
+      <xs:attribute name="authority"    type="xs:string" fixed="DQEval"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+    </xs:restriction>
+  </xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="OutcomesTermType">
+  <xs:simpleContent>
+    <xs:restriction base="local:ControlledTermType">
+      <xs:enumeration value="Study Infeasible"/>
+      <xs:enumeration value="Study Design Revised"/>
+      <xs:enumeration value="Study Variable Modified"/>
+      <xs:enumeration value="Attrition Criteria Modified"/>
+      <xs:enumeration value="Investigation Dates Modified"/>
+      <xs:enumeration value="Concept Sets Refined"/>
+      <xs:enumeration value="Study Methods Revised"/>
+      <xs:enumeration value="Data Source Adjusted"/>
+      <xs:enumeration value="Site Intervention"/>
+      <xs:enumeration value="Coordinating Center Intervention"/>
+      <xs:enumeration value="Additional DQ Investigation"/>
+      <xs:enumeration value="No Intervention"/>
+      <xs:attribute name="authority"    type="xs:string" fixed="Outcomes"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+    </xs:restriction>
+  </xs:simpleContent>
+</xs:complexType>
+<xs:complexType name="ResultsObsTermType">
+  <xs:simpleContent>
+    <xs:restriction base="local:ControlledTermType">
+      <xs:enumeration value="Disparate Site Behavior"/>
+      <xs:enumeration value="Uniform Site Behavior"/>
+      <xs:enumeration value="Disparate Cohort Behavior"/>
+      <xs:enumeration value="Uniform Cohort Behavior"/>
+      <xs:enumeration value="Detrimental Cohort Loss"/>
+      <xs:enumeration value="Anomalies Observed"/>
+      <xs:enumeration value="No Anomalies Observed"/>
+      <xs:enumeration value="Threshold Violation"/>
+      <xs:enumeration value="No Threshold Violations"/>
+      <xs:enumeration value="Expected Output"/>
+      <xs:enumeration value="Expected Term Mapping"/>
+      <xs:enumeration value="Expected Patient Retention"/>
+      <xs:enumeration value="Expected Variable Proportion"/>
+      <xs:enumeration value="Expected Longitunidal Variation"/>
+      <xs:enumeration value="Expected Event Sequencing"/>
+      <xs:enumeration value="Expected Events Observed"/>
+      <xs:enumeration value="Expected Cohort Observations"/>
+      <xs:enumeration value="Expected Concepts Present"/>
+      <xs:enumeration value="Unexpected Output"/>
+      <xs:enumeration value="Unexpected Term Mapping"/>
+      <xs:enumeration value="Unexpected Patient Retention"/>
+      <xs:enumeration value="Unexpected Variable Proportion"/>
+      <xs:enumeration value="Unexpected Longitunidal Variation"/>
+      <xs:enumeration value="Unexpected Event Sequencing"/>
+      <xs:enumeration value="Unexpected Events Observed"/>
+      <xs:enumeration value="Unexpected Cohort Observations"/>
+      <xs:enumeration value="Unexpected Concepts Present"/>
+      <xs:attribute name="authority"    type="xs:string" fixed="ResultObs"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+    </xs:restriction>
+  </xs:simpleContent>
+</xs:complexType>
+
+  <!-- ============================================================
+       Root element: dqresult record
+  ============================================================ -->
+  <xs:element name="dqresult">
+    <xs:annotation>
+      <xs:documentation>
+        Root element for a DQResult metadata record. Contains a flat sequence
+        of administrative, descriptive, and relational elements drawn from the
+        DSpace, Dublin Core, DCMI Terms, and local (unqualified) namespaces.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+
+        <!-- ======================================================
+        CORE ELEMENTS
+        ====================================================== -->
+
+        <!-- Title -->
+        <xs:element name="dc:title"
+                    type="xs:string"
+                    minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Title of the DQ result.
+              Format (study): [Check Type] Study Results: [Study Shorthand].
+              Format (network): [Check Name], [Database Name] (YYYY-MM).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Date Created -->
+        <xs:element name="dcterms:date.created"
+                    type="ISO8601Date"
+                    minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Date the result was produced. Format: YYYY-MM-DD.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Creator -->
+        <xs:element name="dcterms:contributor.author"
+                    type="PersonNameType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Name of the analyst or investigator who ran the code to generate this result.
+              Format: "Family Name, Given Name".
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Affiliation -->
+        <xs:element name="dcterms:contributor.other"
+                    type="ControlledTermType"
+                    minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Affiliated institution of the analyst or investigator.
+              Vocabulary: Research Organization Registry (ROR).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Evaluation Parameters -->
+        <xs:element name="dc.subject"
+                    type="DQEvalTermType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Parameters describing the check function.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Data Provenance -->
+        <xs:element name="local:subject.DataProv"
+                    type="DataProvTermType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [local] Data source analysed and reflected by the results.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Results Type, optional if you want to differentiate bewteen network vs. study-specific results, or types of analyses. Could also be added as a local element if preferred.
+        dc.type | Type | 1..1 | Controlled Term: ResultsType 
+        <xs:element name="dc.type"
+                    type="ControlledTermType"
+                    minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Indicates whether the result is from a Network or a Study-Specific data analysis.
+              Vocabulary: ResultsType.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element> -->
+
+        <!-- Check Summary -->
+        <xs:element name="dcterms:description.abstract"
+                    type="xs:string"
+                    minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Brief description of the check and parameters used to create the result.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Results Characteristics -->
+        <xs:element name="local:dqcheck.resultobs"
+                    type="ResultsObsTermType"
+                    minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              Select terms (as many as are applicable) to characterize your study-specific observations of the analysis.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Results Description -->
+        <xs:element name="dc:description"
+                    type="xs:string"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Narrative description of the analysis results.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Response to Findings -->
+        <xs:element name="local:dqcheck.outcomes"
+                    type="OutcomesTermType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [local] Study actions taken in response to the results.
+              Vocabulary: Outcomes (local).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Outcome Description -->
+        <xs:element name="local:description.outcomes"
+                    type="xs:string"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [local] Narrative description of the study actions taken in response to the results.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Clinical Subject Headings -->
+        <xs:element name="dcterms:subject.mesh"
+                    type="ControlledTermType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Clinical subject matter related to the item.
+              Vocabulary: Medical Subject Headings (MeSH).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- ======================================================
+             ADMINISTRATIVE ELEMENTS
+        ====================================================== -->
+        <!-- Publisher -->
+        <xs:element name="dc:publisher"
+                    type="xs:string"
+                    minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Publisher of the record in the repository.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Rights Statement -->
+        <xs:element name="dc:rights"
+                    type="xs:string"
+                    minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Name of the license applied to the record.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- License Link -->
+        <xs:element name="dcterms:rights.uri"
+                    type="xs:anyURI"
+                    minOccurs="0" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Link to the legal license applied to the record.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Record Language -->
+        <xs:element name="dcterms:language.iso"
+                    type="ISO639LanguageCode"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Language of the record. Value must be an ISO 639 two- or three-letter code.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Database Version -->
+        <xs:element name="local:admin.note"
+                    type="xs:string"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [local] Version of the database analyzed as selected in local.subject.DataProv. Any other administrative notes about the record can also be included here.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- ======================================================
+             RELATIONSHIP ELEMENTS
+        ====================================================== -->
+
+        <!-- relation.isDQResultOfDQCheck | DQCheck Relationship | 0..N -->
+        <xs:element name="dspace:relation.isDQResultOfDQCheck"
+                    type="DSpaceRelationshipType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] Links this DQResult to the DQCheck entity used to produce it.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- relation.isDQResultOfDQResult | DQResult Relationship | 0..N -->
+        <xs:element name="dspace:relation.isDQResultOfDQResult"
+                    type="DSpaceRelationshipType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] Links this DQResult to a complementary DQResult entity.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- relation.isDQResultOfOrgUnit | Institution Relationship | 0..N -->
+        <xs:element name="dspace:relation.isDQResultOfOrgUnit"
+                    type="DSpaceRelationshipType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] Links this DQResult to participating OrgUnit entities (sites with data in the result).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- relation.isDQResultOfStudy | Study Relationship | 0..N -->
+        <xs:element name="dspace:relation.isDQResultOfStudy"
+                    type="DSpaceRelationshipType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] Links this DQResult to the Study entity the check was run for.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- relation.isDQResultOfDocumentation | Documentation Relationship | 0..N -->
+        <xs:element name="dspace:relation.isDQResultOfDocumentation"
+                    type="DSpaceRelationshipType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] Links this DQResult to related Documentation entities (e.g. code used to produce the result).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- ======================================================
+             DSPACE ADMINISTRATIVE ELEMENTS AND ELEMENTS AUTOMATICALLY GENERATED BY DSPACE
+        ====================================================== -->
+
+        <!-- Record Link 
+        <xs:element name="dcterms:identifier.uri"
+                    type="xs:anyURI"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Identifying link to the record.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element> -->
+
+        <!-- Record Accession Date 
+        <xs:element name="dcterms:date.accessioned"
+                    type="ISO8601DateOrDateTime"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Datetime the record was deposited into the repository.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>-->
+
+        <!-- Record Publication Date 
+        <xs:element name="dcterms:date.available"
+                    type="ISO8601DateOrDateTime"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dcterms] Datetime the record was made public on the repository.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>-->
+        
+        <!-- dspace:id | Identifier | 1..1 | checksum 
+        <xs:element name="dspace:id"
+                    type="ChecksumType"
+                    minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] System-generated record identifier which appends the record URLs.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element> -->
+
+        <!-- dspace:collection | Domain | 1..N | handle id 
+        <xs:element name="dspace:collection"
+                    type="HandleIDType"
+                    minOccurs="1" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] User-assigned domain directory where the record is stored in the repository.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element> -->
+
+        <!-- dspace:dspace.entity.type | Entity Type | 1..1 | Controlled Term: EntityType 
+        <xs:element name="dspace:entity.type"
+                    type="ControlledTermType"
+                    minOccurs="1" maxOccurs="1">
+          <xs:annotation>
+            <xs:documentation>
+              [dspace] Type of DSpace record. Used to assign record relationships.
+              Vocabulary: EntityType.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>-->
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

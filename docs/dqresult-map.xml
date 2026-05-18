@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dspace:dqresult
+  xmlns:dspace="https://pedsnet.org/metadata/admin/registries/metadata/dspace"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:dcterms="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://github.com/PEDSnet/DQResults_MAP/blob/85c6f59482841633b4c688d1bf14fd1114a3720c/schema/dqresult-map.xsd">
+
+  <!-- ============================================================
+       DSPACE ADMINISTRATIVE ELEMENTS
+  ============================================================ -->
+
+  <!-- Identifier: system-generated checksum/ID appended to record URLs -->
+  <dspace:id>a3f8c2e1b74d9056f2318cde40a7b195</dspace:id>
+
+  <!-- Domain: collection handle(s) where this record lives -->
+  <dspace:collection>123456789/10</dspace:collection>
+  <dspace:collection>123456789/42</dspace:collection>
+
+  <!-- Entity Type: must match EntityType controlled vocabulary -->
+  <dspace:dspace.entity.type authority="EntityType" authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/dspace">DQResult</dspace:dspace.entity.type>
+
+  <!-- ============================================================
+       DUBLIN CORE ELEMENTS 1.1  (http://purl.org/dc/elements/1.1/)
+  ============================================================ -->
+
+  <dspace:dc.title>Completeness Check Study Results: STUDY-001</dspace:dc.title>
+  <dspace:dc.type authority="ResultsType" authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/local">Study-Specific</dspace:dc.type>
+
+  <!-- Publisher: repository publisher name -->
+  <dspace:dc.publisher>PedsNet Data Quality Program</dspace:dc.publisher>
+
+  <!-- Rights Statement: license name -->
+  <dspace:dc.rights>Creative Commons Attribution 4.0 International (CC BY 4.0)</dspace:dc.rights>
+
+  <!-- Results Description: narrative (repeatable) -->
+  <dspace:dc.description>Completeness analysis identified missing values in the condition_occurrence table for site CHOP across the January 2024 data cycle. Overall completeness rate was 94.2%, below the 95% threshold.</dspace:dc.description>
+
+  <!-- Evaluation Parameters: check function parameters — DQEval vocabulary (repeatable) -->
+  <dspace:dc.subject authority="DQEval" authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/local">Completeness</dspace:dc.subject>
+  <dspace:dc.subject authority="DQEval" authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/local">Condition Occurrence</dspace:dc.subject>
+
+  <!-- Record Language: ISO 639 two-letter code -->
+  <dspace:dc.language.iso>en</dspace:dc.language.iso>
+
+  <!-- ============================================================
+       DCMI TERMS  (http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/)
+  ============================================================ -->
+
+  <!-- Creator: analyst name(s) in "Family Name, Given Name" format (repeatable) -->
+  <dspace:dc.contributor.author>Smith, Jane</dspace:dc.contributor.author>
+  <dspace:dc.contributor.author>Doe, John</dspace:dc.contributor.author>
+
+  <!-- Affiliation: ROR identifier(s) for contributing institutions (repeatable, 1..N required) -->
+  <dspace:dc.contributor.other
+    authority="ROR"
+    authorityURI="https://ror.org"
+    valueURI="https://ror.org/01hcyya28">Children's Hospital of Philadelphia</dspace:dc.contributor.other>
+
+  <!-- Date Created: date result was produced (YYYY-MM-DD) -->
+  <dspace:dc.date.created>2024-02-15</dspace:dc.date.created>
+
+  <!-- Check Summary: brief description of check and parameters (optional, 0..1) -->
+  <dspace:dc.description.abstract>Evaluated completeness of the condition_occurrence domain against PedsNet DQA thresholds for the January 2024 data submission cycle.</dspace:dc.description.abstract>
+
+  <!-- License Link: URL to the legal license text (optional, 0..1) -->
+  <dspace:dc.rights.uri>https://creativecommons.org/licenses/by/4.0/</dspace:dc.rights.uri>
+
+  <!-- Clinical Subject Headings: MeSH terms (optional, repeatable) -->
+  <dspace:dc.subject.mesh
+    authority="MeSH"
+    authorityURI="https://id.nlm.nih.gov/mesh"
+    valueURI="https://id.nlm.nih.gov/mesh/D003924">Diabetes Mellitus, Type 2</dspace:dc.subject.mesh>
+
+  <!-- Record Link: identifying URL(s) for the record (optional, repeatable) -->
+  <dspace:dc.identifier.uri>https://pedsnet.org/metadata/admin/registries/metadata/handle/123456789/10</dspace:dc.identifier.uri>
+
+  <!-- Record Accession Date: datetime deposited (optional, repeatable) -->
+  <dspace:dc.date.accessioned>2024-02-16</dspace:dc.date.accessioned>
+
+  <!-- Record Publication Date: datetime made public (optional, repeatable) -->
+  <dspace:dc.date.available>2024-02-16</dspace:dc.date.available>
+
+  <!-- ============================================================
+       LOCAL ELEMENTS  (unqualified)
+  ============================================================ -->
+
+  <!-- Results Characteristics: dc_subject_results vocabulary (1..N required) -->
+  <dspace:local.dqcheck.resultobs
+    authority="dc_subject_results"
+    authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/local">Below Threshold</dspace:local.dqcheck.resultobs>
+  <dspace:local.dqcheck.resultobs
+    authority="dc_subject_results"
+    authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/local">Flagged for Review</dspace:local.dqcheck.resultobs>
+
+  <!-- Response to Findings: Outcomes vocabulary (optional, repeatable) -->
+  <dspace:local.dqcheck.outcomes
+    authority="Outcomes"
+    authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/local">Site Notified</dspace:local.dqcheck.outcomes>
+
+  <!-- Data Provenance: DataProv vocabulary (1..N required) -->
+  <dspace:local.subject.DataProv
+    authority="DataProv"
+    authorityURI="https://pedsnet.org/metadata/admin/registries/metadata/local">CHOP</dspace:local.subject.DataProv>
+
+  <!-- Outcome Description: narrative of actions taken (optional, repeatable) -->
+  <dspace:local.description.outcomes>Site CHOP was notified of the completeness shortfall and provided a corrected data submission on 2024-03-01.</dspace:local.description.outcomes>
+
+  <!-- Database Version: version of database analyzed (optional, repeatable) -->
+  <dspace:local.admin.note>PedsNet CDM v6.2, January 2024 submission</dspace:local.admin.note>
+
+  <!-- ============================================================
+       DSPACE RELATIONSHIP ELEMENTS
+  ============================================================ -->
+
+  <!-- Link to the DQCheck entity that produced this result -->
+  <dspace:relation.isDQResultOfDQCheck>123456789/5</dspace:relation.isDQResultOfDQCheck>
+
+  <!-- Link to participating OrgUnit entities (sites reflected in result) -->
+  <dspace:relation.isDQResultOfOrgUnit>123456789/20</dspace:relation.isDQResultOfOrgUnit>
+
+  <!-- Link to the Study entity this check was run for -->
+  <dspace:relation.isDQResultOfStudy>123456789/33</dspace:relation.isDQResultOfStudy>
+
+  <!-- Link to related Documentation (code, protocol, etc.) -->
+  <dspace:relation.isDQResultOfDocumentation>123456789/55</dspace:relation.isDQResultOfDocumentation>
+
+  <!-- Optional: link to a complementary DQResult (omitted here — 0..N) -->
+  <!-- <dspace:relation.isDQResultOfDQResult>123456789/11</dspace:relation.isDQResultOfDQResult> -->
+
+</dspace:dqresult>
