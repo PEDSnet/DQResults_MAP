@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Data Quality Results Descriptive Profile (DQRDP) Namespace Reference</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 2rem; line-height: 1.4; max-width: 900px; }
+      code { background: #f4f4f4; padding: 0.15rem 0.35rem; border-radius: 4px; }
+      a { text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      .card { border: 1px solid #e5e5e5; border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; }
+      ul { margin: 0.5rem 0 0.5rem 1.25rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Data Quality Results Descriptive Profile (DQRDP)</h1>
+    <p>
+      This GitHub Pages site hosts the XML Schemas (XSD) for the DQRDP.
+    </p>
+
+    <div class="card">
+      <h2>Schema Files</h2>
+      <ul>
+        <li><a href="./schema/dqresult-map.xsd">dqresult-map.xsd</a></li>
+      </ul>
+      <h2>Vocabulary Files</h2>
+      <ul></ul>
+        <li><a href="./schema/vocabularies/vocab-dqeval.xsd">vocab-dqeval.xsd</a></li>
+        <li><a href="./schema/vocabularies/vocab-dataprov.xsd">vocab-dataprov.xsd</a></li>
+        <li><a href="./schema/vocabularies/vocab-outcomes.xsd">vocab-outcomes.xsd</a></li>
+        <li><a href="./schema/vocabularies/vocab-results.xsd">vocab-results.xsd</a></li>
+      </ul>
+      <p>If any link 404s, confirm the file paths under <code>docs/schema/...</code> match exactly.</p>
+    </div>
+
+    <div class="card">
+      <h2>How to reference the schema from an XML instance</h2>
+      <p>Example (replace the namespace URI to match your XSD <code>targetNamespace</code>):</p>
+      <pre><code>&lt;dqresult
+  xmlns="YOUR_TARGET_NAMESPACE_HERE"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="https://pedsnet.github.io/DQResults_MAP/docs/schema/dqresult-map.xsd"&gt;
+&lt;/dqresult&gt;</code></pre>
+    </div>
+
+    <p>
+      Source repository: https://github.com/PEDSnet/DQResults_MAP
+    </p>
+  </body>
+</html>
