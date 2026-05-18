@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="https://pedsnet.org/metadata/admin/registries/metadata/local/vocab"
+           xmlns:vocab="https://pedsnet.org/metadata/admin/registries/metadata/local/vocab">
+
+  <xs:simpleType name="DQEvalVocabulary">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Disparate Site Behavior"/>
+      <xs:enumeration value="Uniform Site Behavior"/>
+      <xs:enumeration value="Disparate Cohort Behavior"/>
+      <xs:enumeration value="Uniform Cohort Behavior"/>
+      <xs:enumeration value="Detrimental Cohort Loss"/>
+      <xs:enumeration value="Anomalies Observed"/>
+      <xs:enumeration value="No Anomalies Observed"/>
+      <xs:enumeration value="Threshold Violation"/>
+      <xs:enumeration value="No Threshold Violations"/>
+      <xs:enumeration value="Expected Output"/>
+      <xs:enumeration value="Expected Term Mapping"/>
+      <xs:enumeration value="Expected Patient Retention"/>
+      <xs:enumeration value="Expected Variable Proportion"/>
+      <xs:enumeration value="Expected Longitunidal Variation"/>
+      <xs:enumeration value="Expected Event Sequencing"/>
+      <xs:enumeration value="Expected Events Observed"/>
+      <xs:enumeration value="Expected Cohort Observations"/>
+      <xs:enumeration value="Expected Concepts Present"/>
+      <xs:enumeration value="Unexpected Output"/>
+      <xs:enumeration value="Unexpected Term Mapping"/>
+      <xs:enumeration value="Unexpected Patient Retention"/>
+      <xs:enumeration value="Unexpected Variable Proportion"/>
+      <xs:enumeration value="Unexpected Longitunidal Variation"/>
+      <xs:enumeration value="Unexpected Event Sequencing"/>
+      <xs:enumeration value="Unexpected Events Observed"/>
+      <xs:enumeration value="Unexpected Cohort Observations"/>
+      <xs:enumeration value="Unexpected Concepts Present"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>
