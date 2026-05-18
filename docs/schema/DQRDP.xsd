@@ -4,7 +4,7 @@
            xmlns:dc="http://purl.org/dc/elements/1.1/"
            xmlns:dspace="https://pedsnet.org/metadata/admin/registries/metadata/dspace"
            xmlns:local="https://pedsnet.org/metadata/admin/registries/metadata/local"
-           targetNamespace="https://github.com/PEDSnet/DQResults_MAP/"
+           targetNamespace="https://pedsnet.github.io/DQResults_MAP/"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
            version="1.0">
@@ -32,13 +32,13 @@
   <xs:import namespace="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
              schemaLocation="https://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd"/>
   <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
-           schemaLocation="vocabularies/vocab-dqeval.xsd"/>
+           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dqeval.xsd"/>
   <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
-           schemaLocation="vocabularies/vocab-dataprov.xsd"/>
+           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dataprov.xsd"/>
   <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
-           schemaLocation="vocabularies/vocab-outcomes.xsd"/>
+           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies//vocab-outcomes.xsd"/>
   <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
-           schemaLocation="vocabularies/vocab-results.xsd"/>
+           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-results.xsd"/>
 
  
   <!-- ============================================================
