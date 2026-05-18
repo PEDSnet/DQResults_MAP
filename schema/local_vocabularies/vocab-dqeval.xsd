@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           targetNamespace="https://pedsnet.org/metadata/admin/registries/metadata/local/vocab"
-           xmlns:vocab="https://pedsnet.org/metadata/admin/registries/metadata/local/vocab">
+           targetNamespace="https://github.com/PEDSnet/DQResults_MAP"
+           xmlns:vocab="https://github.com/PEDSnet/DQResults_MAP/tree/main/schema/local_vocabularies">
 
   <xs:simpleType name="DQEvalVocabulary">
     <xs:restriction base="xs:string">
