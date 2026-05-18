@@ -31,13 +31,13 @@
              schemaLocation="https://www.dublincore.org/schemas/xmls/qdc/dc.xsd"/>
   <xs:import namespace="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
              schemaLocation="https://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd"/>
-  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
            schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dqeval.xsd"/>
-  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
            schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dataprov.xsd"/>
-  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
            schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies//vocab-outcomes.xsd"/>
-  <xs:import namespace="https://github.com/PEDSnet/DQResults_MAP/"
+  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
            schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-results.xsd"/>
 
  
@@ -137,7 +137,7 @@
       <xs:enumeration value="Non-Network Data Source"/>
       <xs:enumeration value="Anonymized Data Source"/>
       <xs:attribute name="authority"    type="xs:string" fixed="DataProv"/>
-      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
     </xs:restriction>
   </xs:simpleContent>
 </xs:complexType>
@@ -154,7 +154,7 @@
       <xs:enumeration value="Data Anomaly Method"/>
       <xs:enumeration value="Exploratory Analysis"/>
       <xs:attribute name="authority"    type="xs:string" fixed="DQEval"/>
-      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
     </xs:restriction>
   </xs:simpleContent>
 </xs:complexType>
@@ -174,7 +174,7 @@
       <xs:enumeration value="Additional DQ Investigation"/>
       <xs:enumeration value="No Intervention"/>
       <xs:attribute name="authority"    type="xs:string" fixed="Outcomes"/>
-      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
     </xs:restriction>
   </xs:simpleContent>
 </xs:complexType>
@@ -209,7 +209,7 @@
       <xs:enumeration value="Unexpected Cohort Observations"/>
       <xs:enumeration value="Unexpected Concepts Present"/>
       <xs:attribute name="authority"    type="xs:string" fixed="ResultObs"/>
-      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://github.com/PEDSnet/DQResults_MAP/"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
     </xs:restriction>
   </xs:simpleContent>
 </xs:complexType>
