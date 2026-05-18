@@ -70,11 +70,11 @@ Rscript -e "renv::restore()"
 -->
 
 ### Developers & Affiliations
-- **PI, Informatics Lead**: Charles Bailey, MD, PhD<sup>1</sup> <a href="https://orcid.org/0000-0002-8967-0662" aria-label="View ORCID record - 0000-0002-8967-0662"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
-- **Data Analytics Technical Director**: Hanieh Razzaghi, PhD, MPH<sup>1,2</sup> <a href="https://orcid.org/0000-0001-5001-1590" aria-label="View ORCID record - 0000-0001-5001-1590"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
-- **Metadata Librarian**: Annabel Pinkney, MSLIS<sup>1</sup> <a href="https://orcid.org/0009-0007-5255-0871" aria-label="View ORCID record - 0009-0007-5255-0871"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
-- **Data Integration Analyst**: Kaleigh Wieand, MS<sup>1</sup> <a href="https://orcid.org/0009-0003-7477-2601" aria-label="View ORCID record - 0009-0003-7477-2601"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
-- **Data Integration Analyst**: Kimberley Dickinson, MS <sup>1</sup><a href="https://orcid.org/0000-0001-9523-056X" aria-label="View ORCID record - 0000-0001-9523-056X"> <img src="PEDSnet/DQResults_MAP/images/ORCID_iD.png"/></a>
+- **PI, Informatics Lead**: Charles Bailey, MD, PhD<sup>1</sup> <a href="https://orcid.org/0000-0002-8967-0662" aria-label="View ORCID record - 0000-0002-8967-0662"> <img src="images/ORCID_iD.png" width="16"/></a>
+- **Data Analytics Technical Director**: Hanieh Razzaghi, PhD, MPH<sup>1,2</sup> <a href="https://orcid.org/0000-0001-5001-1590" aria-label="View ORCID record - 0000-0001-5001-1590"> <img src="images/ORCID_iD.png" width="16"/></a>
+- **Metadata Librarian**: Annabel Pinkney, MSLIS<sup>1</sup> <a href="https://orcid.org/0009-0007-5255-0871" aria-label="View ORCID record - 0009-0007-5255-0871"> <img src="images/ORCID_iD.png" width="16"/></a>
+- **Data Integration Analyst**: Kaleigh Wieand, MS<sup>1</sup> <a href="https://orcid.org/0009-0003-7477-2601" aria-label="View ORCID record - 0009-0003-7477-2601"> <img src="images/ORCID_iD.png" width="16"/></a>
+- **Data Integration Analyst**: Kimberley Dickinson, MS<sup>1</sup><a href="https://orcid.org/0000-0001-9523-056X" aria-label="View ORCID record - 0000-0001-9523-056X"> <img src="images/ORCID_iD.png" width="16"/></a>
 - **Clinical Research Program Manager**: Miranda Higganbotham, MPH<sup>1</sup>
 
 <sup>1</sup> PEDSnet Learing Health System, Applied Clinical Research Center, Children's Hospital of Philadelphia, Philadelphia, PA <br>
