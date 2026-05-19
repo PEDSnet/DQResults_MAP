@@ -2,8 +2,7 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:dcterms="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
            xmlns:dc="http://purl.org/dc/elements/1.1/"
-           xmlns:dspace="https://pedsnet.org/metadata/admin/registries/metadata/dspace"
-           xmlns:local="https://pedsnet.org/metadata/admin/registries/metadata/local"
+           xmlns:local="https://pedsnet.github.io/DQResults_MAP/"
            targetNamespace="https://pedsnet.github.io/DQResults_MAP/"
            elementFormDefault="qualified"
            attributeFormDefault="unqualified"
@@ -12,15 +11,13 @@
   <!-- ============================================================
        Data Quality Results Descriptive Profile
        Organization:  PEDSnet Learning Health System
-       Description:   Describes a data quality result record in the
-                      DSpace repository. Combines DC Elements 1.1,
-                      DCMI Terms, DSpace administrative elements, and
-                      local elements.
+       Description:   Describes a data quality result record in the DSpace repository. Combines DC Elements 1.1,
+                      DCMI Terms, DSpace administrative elements, and local elements.
        Namespaces:
          DC Elements 1.1  – http://purl.org/dc/elements/1.1/
          DCMI Terms       – http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/
          DSpace           – https://pedsnet.org/metadata/admin/registries/metadata/dspace
-         Local            – (unqualified)
+         Local            – https://pedsnet.github.io/DQResults_MAP/
   ============================================================ -->
 
 
@@ -31,14 +28,10 @@
              schemaLocation="https://www.dublincore.org/schemas/xmls/qdc/dc.xsd"/>
   <xs:import namespace="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
              schemaLocation="https://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd"/>
-  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
-           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dqeval.xsd"/>
-  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
-           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dataprov.xsd"/>
-  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
-           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies//vocab-outcomes.xsd"/>
-  <xs:import namespace="https://pedsnet.github.io/DQResults_MAP/"
-           schemaLocation="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-results.xsd"/>
+  <xs:include schemaLocation="schema/local_vocabularies/vocab-dqeval.xsd"/>
+  <xs:include schemaLocation="schema/local_vocabularies/vocab-dataprov.xsd"/>
+  <xs:include schemaLocation="schema/local_vocabularies/vocab-outcomes.xsd"/>
+  <xs:include schemaLocation="schema/local_vocabularies/vocab-results.xsd"/>
 
  
   <!-- ============================================================
@@ -129,21 +122,27 @@
       </xs:extension>
     </xs:simpleContent>
 </xs:complexType>
-<xs:complexType name="DataProvTermType">
-  <xs:simpleContent>
-    <xs:restriction base="local:ControlledTermType">
+
+<xs:simpleType name="DataProvTermType">
+    <xs:restriction base="xs:string">
       <xs:enumeration value="PEDSnet Data Source"/>
       <xs:enumeration value="PCORnet Data Source"/>
       <xs:enumeration value="Non-Network Data Source"/>
       <xs:enumeration value="Anonymized Data Source"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="DataProvTermType">
+  <xs:simpleContent>
+    <xs:extension base="local:DataProvValueType">
       <xs:attribute name="authority"    type="xs:string" fixed="DataProv"/>
       <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
-    </xs:restriction>
+    </xs:extension>
   </xs:simpleContent>
 </xs:complexType>
-<xs:complexType name="DQEvalTermType">
-  <xs:simpleContent>
-    <xs:restriction base="local:ControlledTermType">
+
+<xs:simpleType name="DQEvalTermType">
+    <xs:restriction base="xs:string">
       <xs:enumeration value="Person-Level Analysis"/>
       <xs:enumeration value="Visit-Level Analysis"/>
       <xs:enumeration value="Event-Level Analysis"/>
@@ -153,14 +152,20 @@
       <xs:enumeration value="Single-Site Analysis"/>
       <xs:enumeration value="Data Anomaly Method"/>
       <xs:enumeration value="Exploratory Analysis"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="DQEvalTermType">
+  <xs:simpleContent>
+    <xs:extension base="local:DQEvalValueType">
       <xs:attribute name="authority"    type="xs:string" fixed="DQEval"/>
       <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
-    </xs:restriction>
+    </xs:extension>
   </xs:simpleContent>
 </xs:complexType>
-<xs:complexType name="OutcomesTermType">
-  <xs:simpleContent>
-    <xs:restriction base="local:ControlledTermType">
+
+<xs:simpleType name="OutcomesTermType">
+    <xs:restriction base="xs:string">
       <xs:enumeration value="Study Infeasible"/>
       <xs:enumeration value="Study Design Revised"/>
       <xs:enumeration value="Study Variable Modified"/>
@@ -173,14 +178,20 @@
       <xs:enumeration value="Coordinating Center Intervention"/>
       <xs:enumeration value="Additional DQ Investigation"/>
       <xs:enumeration value="No Intervention"/>
+    </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="OutcomesTermType">
+  <xs:simpleContent>
+    <xs:extension base="local:OutcomesValueType">
       <xs:attribute name="authority"    type="xs:string" fixed="Outcomes"/>
       <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
-    </xs:restriction>
+    </xs:extension>
   </xs:simpleContent>
 </xs:complexType>
-<xs:complexType name="ResultsObsTermType">
-  <xs:simpleContent>
-    <xs:restriction base="local:ControlledTermType">
+
+<xs:simpleType name="ResultsObsTermType">
+    <xs:restriction base="xs:string">
       <xs:enumeration value="Disparate Site Behavior"/>
       <xs:enumeration value="Uniform Site Behavior"/>
       <xs:enumeration value="Disparate Cohort Behavior"/>
@@ -194,7 +205,7 @@
       <xs:enumeration value="Expected Term Mapping"/>
       <xs:enumeration value="Expected Patient Retention"/>
       <xs:enumeration value="Expected Variable Proportion"/>
-      <xs:enumeration value="Expected Longitunidal Variation"/>
+      <xs:enumeration value="Expected Longitudinal Variation"/>
       <xs:enumeration value="Expected Event Sequencing"/>
       <xs:enumeration value="Expected Events Observed"/>
       <xs:enumeration value="Expected Cohort Observations"/>
@@ -203,14 +214,20 @@
       <xs:enumeration value="Unexpected Term Mapping"/>
       <xs:enumeration value="Unexpected Patient Retention"/>
       <xs:enumeration value="Unexpected Variable Proportion"/>
-      <xs:enumeration value="Unexpected Longitunidal Variation"/>
+      <xs:enumeration value="Unexpected Longitudinal Variation"/>
       <xs:enumeration value="Unexpected Event Sequencing"/>
       <xs:enumeration value="Unexpected Events Observed"/>
       <xs:enumeration value="Unexpected Cohort Observations"/>
       <xs:enumeration value="Unexpected Concepts Present"/>
-      <xs:attribute name="authority"    type="xs:string" fixed="ResultObs"/>
-      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
     </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="ResultsObsTermType">
+  <xs:simpleContent>
+    <xs:extension base="local:ResultsObsTermType">
+      <xs:attribute name="authority"    type="xs:string" fixed="ResultsObs"/>
+      <xs:attribute name="authorityURI" type="xs:anyURI" fixed="https://pedsnet.github.io/DQResults_MAP/"/>
+    </xs:extension>
   </xs:simpleContent>
 </xs:complexType>
 
@@ -233,8 +250,7 @@
         ====================================================== -->
 
         <!-- Title -->
-        <xs:element name="dc:title"
-                    type="xs:string"
+        <xs:element ref="dc:title"
                     minOccurs="1" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>
@@ -246,8 +262,7 @@
         </xs:element>
 
         <!-- Date Created -->
-        <xs:element name="dcterms:date.created"
-                    type="ISO8601Date"
+        <xs:element ref="dcterms:created"
                     minOccurs="1" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>
@@ -257,8 +272,7 @@
         </xs:element>
 
         <!-- Creator -->
-        <xs:element name="dcterms:contributor.author"
-                    type="PersonNameType"
+        <xs:element ref="dcterms:creator"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -269,8 +283,7 @@
         </xs:element>
 
         <!-- Affiliation -->
-        <xs:element name="dcterms:contributor.other"
-                    type="ControlledTermType"
+        <xs:element ref="dc:contributor"
                     minOccurs="1" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -281,7 +294,7 @@
         </xs:element>
 
         <!-- Evaluation Parameters -->
-        <xs:element name="dc.subject"
+        <xs:element ref="dc:subject"
                     type="DQEvalTermType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -292,7 +305,7 @@
         </xs:element>
 
         <!-- Data Provenance -->
-        <xs:element name="local:subject.DataProv"
+        <xs:element name="dataProv"
                     type="DataProvTermType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -303,8 +316,8 @@
         </xs:element>
 
         <!-- Results Type, optional if you want to differentiate bewteen network vs. study-specific results, or types of analyses. Could also be added as a local element if preferred.
-        dc.type | Type | 1..1 | Controlled Term: ResultsType 
-        <xs:element name="dc.type"
+        Type 
+        <xs:element name="local:type"
                     type="ControlledTermType"
                     minOccurs="1" maxOccurs="1">
           <xs:annotation>
@@ -316,8 +329,7 @@
         </xs:element> -->
 
         <!-- Check Summary -->
-        <xs:element name="dcterms:description.abstract"
-                    type="xs:string"
+        <xs:element ref="dcterms:abstract"
                     minOccurs="0" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>
@@ -327,7 +339,7 @@
         </xs:element>
 
         <!-- Results Characteristics -->
-        <xs:element name="local:dqcheck.resultobs"
+        <xs:element name="ResultsObs"
                     type="ResultsObsTermType"
                     minOccurs="1" maxOccurs="unbounded">
           <xs:annotation>
@@ -338,8 +350,7 @@
         </xs:element>
 
         <!-- Results Description -->
-        <xs:element name="dc:description"
-                    type="xs:string"
+        <xs:element ref="dc:description"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -349,7 +360,7 @@
         </xs:element>
 
         <!-- Response to Findings -->
-        <xs:element name="local:dqcheck.outcomes"
+        <xs:element name="Outcomes"
                     type="OutcomesTermType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -361,7 +372,7 @@
         </xs:element>
 
         <!-- Outcome Description -->
-        <xs:element name="local:description.outcomes"
+        <xs:element name="local:outcomesDescription"
                     type="xs:string"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -372,7 +383,7 @@
         </xs:element>
 
         <!-- Clinical Subject Headings -->
-        <xs:element name="dcterms:subject.mesh"
+        <xs:element name="local:mesh"
                     type="ControlledTermType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -387,8 +398,7 @@
              ADMINISTRATIVE ELEMENTS
         ====================================================== -->
         <!-- Publisher -->
-        <xs:element name="dc:publisher"
-                    type="xs:string"
+        <xs:element ref="dc:publisher"
                     minOccurs="1" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>
@@ -398,8 +408,7 @@
         </xs:element>
 
         <!-- Rights Statement -->
-        <xs:element name="dc:rights"
-                    type="xs:string"
+        <xs:element ref="dc:rights"
                     minOccurs="1" maxOccurs="1">
           <xs:annotation>
             <xs:documentation>
@@ -409,7 +418,7 @@
         </xs:element>
 
         <!-- License Link -->
-        <xs:element name="dcterms:rights.uri"
+        <xs:element name="local:license"
                     type="xs:anyURI"
                     minOccurs="0" maxOccurs="1">
           <xs:annotation>
@@ -420,8 +429,7 @@
         </xs:element>
 
         <!-- Record Language -->
-        <xs:element name="dcterms:language.iso"
-                    type="ISO639LanguageCode"
+        <xs:element ref="dcterms:language"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -431,7 +439,7 @@
         </xs:element>
 
         <!-- Database Version -->
-        <xs:element name="local:admin.note"
+        <xs:element name="local:adminNote"
                     type="xs:string"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -446,7 +454,7 @@
         ====================================================== -->
 
         <!-- relation.isDQResultOfDQCheck | DQCheck Relationship | 0..N -->
-        <xs:element name="dspace:relation.isDQResultOfDQCheck"
+        <xs:element name="local:isDQResultOfDQCheck"
                     type="DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -457,7 +465,7 @@
         </xs:element>
 
         <!-- relation.isDQResultOfDQResult | DQResult Relationship | 0..N -->
-        <xs:element name="dspace:relation.isDQResultOfDQResult"
+        <xs:element name="local:isDQResultOfDQResult"
                     type="DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -468,7 +476,7 @@
         </xs:element>
 
         <!-- relation.isDQResultOfOrgUnit | Institution Relationship | 0..N -->
-        <xs:element name="dspace:relation.isDQResultOfOrgUnit"
+        <xs:element name="local:isDQResultOfOrgUnit"
                     type="DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -479,7 +487,7 @@
         </xs:element>
 
         <!-- relation.isDQResultOfStudy | Study Relationship | 0..N -->
-        <xs:element name="dspace:relation.isDQResultOfStudy"
+        <xs:element name="local:isDQResultOfStudy"
                     type="DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -490,7 +498,7 @@
         </xs:element>
 
         <!-- relation.isDQResultOfDocumentation | Documentation Relationship | 0..N -->
-        <xs:element name="dspace:relation.isDQResultOfDocumentation"
+        <xs:element name="local:isDQResultOfDocumentation"
                     type="DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
@@ -537,8 +545,8 @@
           </xs:annotation>
         </xs:element>-->
         
-        <!-- dspace:id | Identifier | 1..1 | checksum 
-        <xs:element name="dspace:id"
+        <!-- local:id | Identifier | 1..1 | checksum 
+        <xs:element name="local:id"
                     type="ChecksumType"
                     minOccurs="1" maxOccurs="1">
           <xs:annotation>
@@ -548,8 +556,8 @@
           </xs:annotation>
         </xs:element> -->
 
-        <!-- dspace:collection | Domain | 1..N | handle id 
-        <xs:element name="dspace:collection"
+        <!-- local:collection | Domain | 1..N | handle id 
+        <xs:element name="local:collection"
                     type="HandleIDType"
                     minOccurs="1" maxOccurs="unbounded">
           <xs:annotation>
@@ -559,8 +567,8 @@
           </xs:annotation>
         </xs:element> -->
 
-        <!-- dspace:dspace.entity.type | Entity Type | 1..1 | Controlled Term: EntityType 
-        <xs:element name="dspace:entity.type"
+        <!-- local:dspace.entity.type | Entity Type | 1..1 | Controlled Term: EntityType 
+        <xs:element name="local:entity.type"
                     type="ControlledTermType"
                     minOccurs="1" maxOccurs="1">
           <xs:annotation>

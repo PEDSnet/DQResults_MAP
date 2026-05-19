@@ -18,7 +18,7 @@
       <xs:enumeration value="Expected Term Mapping"/>
       <xs:enumeration value="Expected Patient Retention"/>
       <xs:enumeration value="Expected Variable Proportion"/>
-      <xs:enumeration value="Expected Longitunidal Variation"/>
+      <xs:enumeration value="Expected Longitudinal Variation"/>
       <xs:enumeration value="Expected Event Sequencing"/>
       <xs:enumeration value="Expected Events Observed"/>
       <xs:enumeration value="Expected Cohort Observations"/>
@@ -27,7 +27,7 @@
       <xs:enumeration value="Unexpected Term Mapping"/>
       <xs:enumeration value="Unexpected Patient Retention"/>
       <xs:enumeration value="Unexpected Variable Proportion"/>
-      <xs:enumeration value="Unexpected Longitunidal Variation"/>
+      <xs:enumeration value="Unexpected Longitudinal Variation"/>
       <xs:enumeration value="Unexpected Event Sequencing"/>
       <xs:enumeration value="Unexpected Events Observed"/>
       <xs:enumeration value="Unexpected Cohort Observations"/>
