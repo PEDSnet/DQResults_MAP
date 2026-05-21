@@ -3,7 +3,7 @@
            targetNamespace="https://pedsnet.github.io/DQResults_MAP/"
            xmlns:vocab="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dqeval.xsd">
 
-  <xs:simpleType name="DQEvalVocabulary">
+  <xs:simpleType name="DQEval">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Person-Level Analysis"/>
       <xs:enumeration value="Visit-Level Analysis"/>

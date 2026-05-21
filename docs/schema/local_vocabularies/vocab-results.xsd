@@ -3,7 +3,7 @@
            targetNamespace="https://pedsnet.github.io/DQResults_MAP/"
            xmlns:vocab="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-results.xsd">
 
-  <xs:simpleType name="DQEvalVocabulary">
+  <xs:simpleType name="resultsObsVocabulary">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Disparate Site Behavior"/>
       <xs:enumeration value="Uniform Site Behavior"/>

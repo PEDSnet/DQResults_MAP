@@ -3,7 +3,7 @@
            targetNamespace="https://pedsnet.github.io/DQResults_MAP/"
            xmlns:vocab="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-dataprov.xsd">
 
-  <xs:simpleType name="DQEvalVocabulary">
+  <xs:simpleType name="dataProvVocabulary">
     <xs:restriction base="xs:string">
       <xs:enumeration value="PEDSnet Data Source"/>
       <xs:enumeration value="PCORnet Data Source"/>

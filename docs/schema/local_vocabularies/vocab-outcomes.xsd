@@ -3,7 +3,7 @@
            targetNamespace="https://pedsnet.github.io/DQResults_MAP/"
            xmlns:vocab="https://pedsnet.github.io/DQResults_MAP/schema/local_vocabularies/vocab-outcomes.xsd">
 
-  <xs:simpleType name="DQEvalVocabulary">
+  <xs:simpleType name="outcomesVocabulary">
     <xs:restriction base="xs:string">
       <xs:enumeration value="Study Infeasible"/>
       <xs:enumeration value="Study Design Revised"/>
