@@ -4,52 +4,274 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Data Quality Results Descriptive Profile (DQRDP) Namespace Reference</title>
+
     <style>
-      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; margin: 2rem; line-height: 1.4; max-width: 900px; }
-      code { background: #f4f4f4; padding: 0.15rem 0.35rem; border-radius: 4px; }
-      a { text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      .card { border: 1px solid #e5e5e5; border-radius: 10px; padding: 1rem 1.25rem; margin: 1rem 0; }
-      ul { margin: 0.5rem 0 0.5rem 1.25rem; }
+      :root{
+        /* PEDSnet-ish palette (teal/mint + soft neutrals) */
+        --ink: #0b2b33;
+        --muted: #4c6670;
+        --brand-700: #0b5f73;   /* deep teal */
+        --brand-600: #0f748b;   /* teal */
+        --brand-200: #cfeaf0;   /* light teal */
+        --mint-200: #d9f2ec;    /* light mint */
+        --surface: #ffffff;
+        --surface-2: #f6fafb;
+        --border: #dbe7ea;
+
+        --radius: 14px;
+        --shadow: 0 10px 30px rgba(11, 43, 51, 0.08);
+      }
+
+      * { box-sizing: border-box; }
+
+      body{
+        margin: 0;
+        color: var(--ink);
+        background:
+          radial-gradient(900px 260px at 20% 0%, var(--mint-200) 0%, transparent 60%),
+          radial-gradient(900px 260px at 80% 0%, var(--brand-200) 0%, transparent 60%),
+          linear-gradient(#ffffff, #ffffff);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        line-height: 1.55;
+      }
+
+      a{
+        color: var(--brand-700);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      a:hover{ text-decoration: underline; }
+
+      .container{
+        max-width: 980px;
+        margin: 0 auto;
+        padding: 28px 18px 60px;
+      }
+
+      header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 16px;
+        background: rgba(255,255,255,0.75);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(6px);
+      }
+
+      .brand{
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand img{
+        width: 44px;
+        height: 44px;
+        object-fit: contain;
+        flex: 0 0 auto;
+      }
+
+      .brand .title{
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+      }
+
+      .brand h1{
+        font-size: 18px;
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      .brand p{
+        margin: 2px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .pill{
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: linear-gradient(135deg, rgba(15,116,139,0.10), rgba(217,242,236,0.55));
+        color: var(--brand-700);
+        font-size: 13px;
+        font-weight: 650;
+        white-space: nowrap;
+      }
+
+      .grid{
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1fr minmax(320px, 650px);
+        gap: 16px;
+      }
+
+      @media (max-width: 860px){
+        .grid{ grid-template-columns: 1fr; }
+      }
+
+      .card{
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        padding: 18px 18px 16px;
+      }
+
+      .card h2{
+        margin: 0 0 10px;
+        font-size: 16px;
+        letter-spacing: 0.2px;
+        color: var(--ink);
+      }
+
+      .section + .section{ margin-top: 14px; }
+
+      ul{
+        margin: 8px 0 0 18px;
+        padding: 0;
+      }
+      li{ margin: 6px 0; }
+
+      code{
+        background: var(--surface-2);
+        border: 1px solid var(--border);
+        padding: 0.12rem 0.35rem;
+        border-radius: 8px;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        font-size: 0.95em;
+      }
+
+      pre{
+        margin: 2px 0 0;
+        padding: 7px;
+        background: #06262e;
+        color: #eaf6f8;
+        border-radius: 6px;
+        overflow: auto;
+        border: 1px solid rgba(255,255,255,0.10);
+      }
+      pre code{
+        background: transparent;
+        border: 0;
+        padding: 0;
+        color: inherit;
+      }
+
+      .subtle{
+        color: var(--muted);
+        font-size: 14px;
+        margin: 10px 0 0;
+      }
+
+      .footer{
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .kicker{
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--brand-600);
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
     </style>
   </head>
+
   <body>
-    <h1>Data Quality Results Descriptive Profile (DQRDP)</h1>
-    <p>
-      This GitHub Pages site hosts the XML Schemas (XSD) for the DQRDP.
-    </p>
+    <div class="container">
+      <header>
+        <div class="brand">
+          <!-- Update filename/path as needed -->
+          <img src="pedsnet-logo.png" alt="PEDSnet logo" />
+          <div class="title">
+            <h1>Data Quality Results Descriptive Profile (DQRDP)</h1>
+            <p>This site hosts the XML Schemas (XSD) for the DQRDP.</p>
+          </div>
+        </div>
 
-    <div class="card">
-      <h2>Schema Files</h2>
-      <ul>
-        <li><a href="./schema/DQRDP.xsd">dqresult-map.xsd</a></li>
-      </ul>
-      <h2>Vocabulary Files</h2>
-      <ul>
-        <li><a href="./schema/local_vocabularies/vocab-dqeval.xsd">vocab-dqeval.xsd</a></li>
-        <li><a href="./schema/local_vocabularies/vocab-dataprov.xsd">vocab-dataprov.xsd</a></li>
-        <li><a href="./schema/local_vocabularies/vocab-outcomes.xsd">vocab-outcomes.xsd</a></li>
-        <li><a href="./schema/local_vocabularies/vocab-results.xsd">vocab-results.xsd</a></li>
-      </ul>
-      <h2>Schema Documentation Files</h2>
-      <ul>
-        <li>In Progress</li>
-      </ul>
-      <p>If any link 404s, confirm the file paths under <code>docs/schema/...</code> match exactly.</p>
-    </div>
+        <div class="pill">DQRDP · XSD Reference</div>
 
-    <div class="card">
-      <h2>How to reference the schema from an XML instance</h2>
-      <p>Example (replace the namespace URI to match your XSD <code>targetNamespace</code>):</p>
-      <pre><code>&lt;dqresult
-  xmlns="YOUR_TARGET_NAMESPACE_HERE"
+
+      </header>
+      <div class="grid">
+        <main class="card">
+          <div class="section">
+            <span class="kicker">Downloads</span>
+            <h2>Schema Files</h2>
+            <ul>
+              <!-- NOTE: Your original anchor text and href didn't match.
+                   Update to the correct filename(s) in your repo. -->
+              <li><a href="./schema/DQRDP.xsd">DQRDP.xsd</a></li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h2>Vocabulary Files</h2>
+            <ul>
+              <li><a href="./schema/local_vocabularies/vocab-dqeval.xsd">vocab-dqeval.xsd</a></li>
+              <li><a href="./schema/local_vocabularies/vocab-dataprov.xsd">vocab-dataprov.xsd</a></li>
+              <li><a href="./schema/local_vocabularies/vocab-outcomes.xsd">vocab-outcomes.xsd</a></li>
+              <li><a href="./schema/local_vocabularies/vocab-results.xsd">vocab-results.xsd</a></li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <h2>Schema Documentation Files</h2>
+            <ul>
+              <li>IN PROGRESS</li>
+            </ul>
+          </div>
+
+        </main>
+
+        <aside class="card">
+          <span class="kicker">Usage</span>
+          <h2>Reference the schema from an XML instance</h2>
+          <p class="subtle">
+            Replace the namespace URI to match your XSD <code>targetNamespace</code>.
+          </p>
+          <pre><code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;local:dqresult
+  xmlns:local="https://pedsnet.github.io/DQResults_MAP/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:dcterms="http://purl.org/dc/terms/"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="https://pedsnet.github.io/DQResults_MAP/docs/schema/dqresult-map.xsd"&gt;
-&lt;/dqresult&gt;</code></pre>
-    </div>
+  xsi:schemaLocation="https://pedsnet.github.io/DQResults_MAP/
+                      https://pedsnet.github.io/DQResults_MAP/schema/DQRDP.xsd"&gt;
+          </code></pre>
+          <br>
+          
+          <div class="section">
+            <p class="subtle">
+              If you encounter a 404 error, confirm the file paths under <code>docs/schema/...</code> match exactly (case-sensitive).
+            </p>
+          </div>
 
-    <p>
-      Source repository: https://github.com/PEDSnet/DQResults_MAP
-    </p>
+          <div class="footer">
+            Source repository: <code>https://github.com/PEDSnet/DQResults_MAP</code>
+          </div>
+
+
+
+        </aside>
+      </div>
+    </div>
   </body>
 </html>
