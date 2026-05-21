@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:dcterms="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
+           xmlns:dcterms="http://purl.org/dc/terms/"
            xmlns:dc="http://purl.org/dc/elements/1.1/"
            xmlns:local="https://pedsnet.github.io/DQResults_MAP/"
            targetNamespace="https://pedsnet.github.io/DQResults_MAP/"
@@ -25,9 +25,9 @@
    External namespace imports 
    ============================================================ -->
   <xs:import namespace="http://purl.org/dc/elements/1.1/"
-             schemaLocation="https://www.dublincore.org/schemas/xmls/qdc/dc.xsd"/>
-  <xs:import namespace="http://dublincore.org/specifications/dublin-core/dcmi-terms/2020-01-20/"
-             schemaLocation="https://dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd"/>
+             schemaLocation="file:///Users/pinkneya1/Documents/dc.xsd"/>
+  <xs:import namespace="http://purl.org/dc/terms/"
+             schemaLocation="file:///Users/pinkneya1/Documents/DCterms.xsd"/>
   <xs:include schemaLocation="schema/local_vocabularies/vocab-dqeval.xsd"/>
   <xs:include schemaLocation="schema/local_vocabularies/vocab-dataprov.xsd"/>
   <xs:include schemaLocation="schema/local_vocabularies/vocab-outcomes.xsd"/>
@@ -272,11 +272,11 @@
         </xs:element>
 
         <!-- Creator -->
-        <xs:element ref="dcterms:creator"
+        <xs:element ref="dc:creator"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
-              [dcterms] Name of the analyst or investigator who ran the code to generate this result.
+              [dc] Name of the analyst or investigator who ran the code to generate this result.
               Format: "Family Name, Given Name".
             </xs:documentation>
           </xs:annotation>
@@ -293,24 +293,24 @@
           </xs:annotation>
         </xs:element>
 
-        <!-- Evaluation Parameters -->
-        <xs:element name="subject"
-                    type="DQEvalTermType"
-                    minOccurs="0" maxOccurs="unbounded">
-          <xs:annotation>
-            <xs:documentation>
-              [dc] Parameters describing the check function.
-            </xs:documentation>
-          </xs:annotation>
-        </xs:element>
-
         <!-- Data Provenance -->
         <xs:element name="dataProv"
-                    type="DataProvTermType"
+              type="local:DataProvTermType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
               [local] Data source analysed and reflected by the results.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+
+        <!-- Evaluation Parameters -->
+        <xs:element name="subject"
+              type="local:DQEvalTermType"
+                    minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              [dc] Parameters describing the check function.
             </xs:documentation>
           </xs:annotation>
         </xs:element>
@@ -340,7 +340,7 @@
 
         <!-- Results Characteristics -->
         <xs:element name="resultsObs"
-                    type="resultsObsTermType"
+                    type="local:resultsObsTermType"
                     minOccurs="1" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -361,7 +361,7 @@
 
         <!-- Response to Findings -->
         <xs:element name="outcomes"
-                    type="outcomesTermType"
+                    type="local:outcomesTermType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -384,7 +384,7 @@
 
         <!-- Clinical Subject Headings -->
         <xs:element name="mesh"
-                    type="ControlledTermType"
+                    type="local:ControlledTermType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -429,7 +429,7 @@
         </xs:element>
 
         <!-- Record Language -->
-        <xs:element ref="dcterms:language"
+        <xs:element ref="dc:language"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -455,7 +455,7 @@
 
         <!-- relation.isDQResultOfDQCheck | DQCheck Relationship | 0..N -->
         <xs:element name="isDQResultOfDQCheck"
-                    type="DSpaceRelationshipType"
+                    type="local:DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -466,7 +466,7 @@
 
         <!-- relation.isDQResultOfDQResult | DQResult Relationship | 0..N -->
         <xs:element name="isDQResultOfDQResult"
-                    type="DSpaceRelationshipType"
+                    type="local:DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -477,7 +477,7 @@
 
         <!-- relation.isDQResultOfOrgUnit | Institution Relationship | 0..N -->
         <xs:element name="isDQResultOfOrgUnit"
-                    type="DSpaceRelationshipType"
+                    type="local:DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -488,7 +488,7 @@
 
         <!-- relation.isDQResultOfStudy | Study Relationship | 0..N -->
         <xs:element name="isDQResultOfStudy"
-                    type="DSpaceRelationshipType"
+                    type="local:DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
@@ -499,7 +499,7 @@
 
         <!-- relation.isDQResultOfDocumentation | Documentation Relationship | 0..N -->
         <xs:element name="isDQResultOfDocumentation"
-                    type="DSpaceRelationshipType"
+                    type="local:DSpaceRelationshipType"
                     minOccurs="0" maxOccurs="unbounded">
           <xs:annotation>
             <xs:documentation>
