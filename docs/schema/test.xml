@@ -1,4 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<local:dqresult
+    xmlns:local="https://pedsnet.github.io/DQResults_MAP/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://pedsnet.github.io/DQResults_MAP/
+                        https://pedsnet.github.io/DQResults_MAP/schema/DQRDP.xsd">
 
+<!-- Descriptive Information -->                        
+<dc:title>DQ Results of a Cohort Attrition Check - Test Metadata</dc:title>
+<dcterms:created>2026-05</dcterms:created>
+<dc:creator>Pinkney, Annabel</dc:creator>
+<dc:contributor>PEDSnet Data Coordinating Center</dc:contributor>
+
+<!-- Source(s) of Data Being Assessed-->
+<local:dataProv>PEDSnet Data Source</local:dataProv>
+<local:dataProv>PCORnet Data Source</local:dataProv>
+
+<!-- Description of the module and check employed for data quality assessment. Option to add description. -->
+<local:subject>Multi-Site Analysis</local:subject>
+<local:subject>Cross-Sectional Analysis</local:subject>
+<local:subject>Exploratory Analysis</local:subject>
+<local:subject>Person-Level Analysis</local:subject>
+<dcterms:abstract>The results of a Cohort Attrition check using Multi Site, Exploratory, Cross-Sectional parameters. 
+    This check investigates patient retention as study cohort inclusion criteria are applied. This check 
+    was run to assess whether counts of patients with evidence of kidney stones aligned with investigator expectations 
+    across sites. The final cohort definition (step 5) is a union of steps 3 and 4.</dcterms:abstract>
+
+<!-- Description of the Data Quality Results.-->    
+<local:resultsObs>Disparate Site Behavior</local:resultsObs>
+<local:resultsObs>Expected Patient Retention</local:resultsObs>
+<dc:description>
+    - As expected, adult sites have a larger proportion of kidney stone patients than pediatric sites. There is a clear separation observed on the attrition.
+    - The site with the largest drop-off at step 4 indicates that a lower proportion of their kidney stone patients have record of a kidney stone removal procedure.
+    - Generally, sites follow a similar pattern as attrition steps are applied. </dc:description>
+
+<!-- Description of the actions taken in response to the results. -->
+<local:outcomes>Additional DQ Investigation</local:outcomes>
+<local:outcomesDescription>We reached out to sites with a steep drop off at step 4 for further 
+    investigation into whether they could be missing kidney stone removal procedures in their ETL processes</local:outcomesDescription>
+
+<!-- Context for the clinical domain of the data being assessed. -->    
+<local:mesh>Kidney Calculi</local:mesh>
+<local:mesh>Kidney Diseases</local:mesh>
+<local:mesh>Urologic Diseases</local:mesh>
+
+<!-- Administrative Elements -->
+<dc:publisher>PEDSnet</dc:publisher>
+<dc:rights>CC-BY 4.0 Attribution License</dc:rights>
+<local:license>https://creativecommons.org/licenses/by/4.0/</local:license>
+<dc:language>en</dc:language>
+
+<!-- Linkage Elements to related content.-->
+<local:isDQResultOfDQCheck>https://doi.org/10.24373/pdsp-431</local:isDQResultOfDQCheck>
+<local:isDQResultOfStudy>https://hdl.handle.net/20.500.14642/827</local:isDQResultOfStudy>
+
+</local:dqresult>                       
 
 
 
