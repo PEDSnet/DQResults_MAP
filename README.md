@@ -13,12 +13,11 @@
 <!-- Uncomment and edit below for a documentation hyperlink. -->
 
 <a href="https://github.com/PEDSnet/DQResults_MAP"><strong>Explore the docs »</strong></a>
-- <a href="https://github.com/PEDSnet/DQResults_MAP/tree/main/docs">DQRDP Guidelines & Data Dictionary</a><br>
-- <a href="https://github.com/PEDSnet/DQResults_MAP/tree/main/docs">DQRDP Schemas and Changes</a><br>
+- <a href="https://github.com/PEDSnet/DQResults_MAP/tree/main/docs">DQRDP Guidelines & Data Dictionary - Coming soon!</a><br>
+- <a href="https://github.com/PEDSnet/DQResults_MAP/tree/6abac710c395797398cb8b703066608e58ddc115/docs/schema">DQRDP Schemas and Vocabularies</a><br>
+- <a href="https://github.com/PEDSnet/DQResults_MAP/blob/6abac710c395797398cb8b703066608e58ddc115/docs/schema/test.xml">Example DQ Result Metadata Record</a><br>
 - DQRDP Conversions (Mappings and XSLTs) - Coming soon!<br> 
-- DQRDP Design Principles - Coming soon!<br>
 - DQRDP Archived Resources - Coming soon!<br>
-- DQRDP Related Formats - Coming soon!
     <!-- <br /> -->
 
 </div>
