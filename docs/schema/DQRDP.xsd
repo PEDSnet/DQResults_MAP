@@ -25,9 +25,9 @@
    External namespace imports 
    ============================================================ -->
   <xs:import namespace="http://purl.org/dc/elements/1.1/"
-             schemaLocation="file:///Users/pinkneya1/Documents/dc.xsd"/>
+             schemaLocation="https://www.dublincore.org/schemas/xmls/qdc/dc.xsd"/>
   <xs:import namespace="http://purl.org/dc/terms/"
-             schemaLocation="file:///Users/pinkneya1/Documents/DCterms.xsd"/>
+             schemaLocation="https://www.dublincore.org/schemas/xmls/qdc/2006/01/06/dcterms.xsd"/>
   <xs:include schemaLocation="schema/local_vocabularies/vocab-dqeval.xsd"/>
   <xs:include schemaLocation="schema/local_vocabularies/vocab-dataprov.xsd"/>
   <xs:include schemaLocation="schema/local_vocabularies/vocab-outcomes.xsd"/>
